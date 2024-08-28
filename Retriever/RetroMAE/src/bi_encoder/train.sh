@@ -1,0 +1,19 @@
+python -m torch.distributed.launch --nproc_per_node {number of gpus} \
+-m bi_encoder.run \
+--output_dir {path to save model} \
+--model_name_or_path Shitao/RetroMAE_MSMARCO \
+--do_train  \
+--corpus_file ./data/BertTokenizer_data/corpus \
+--train_query_file ./data/BertTokenizer_data/train_query \
+--train_qrels ./data/BertTokenizer_data/train_qrels.txt \
+--neg_file {negative file} \
+--query_max_len 32 \
+--passage_max_len 140 \
+--fp16  \
+--per_device_train_batch_size 16 \
+--train_group_size 16 \
+--sample_neg_from_topk 200 \
+--learning_rate 2e-5 \
+--num_train_epochs 4 \
+--negatives_x_device  \
+--dataloader_num_workers 6 
