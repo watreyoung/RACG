@@ -148,23 +148,3 @@ It is a json with the following format:
      },
 ]
 ```
-
-
-
-## Reference
-
-If you plan to use `SCODE-R` in your project, please consider citing the paper:
-```
-@inproceedings{parvez2021retrieval,
-  title = {Retrieval Augmented Code Generation and Summarization},
-  author = {Parvez, Md Rizwan and Ahmad, Wasi Uddin, and Chakraborty, Saikat and Ray, Baishakhi and Chang, Kai-Wei},
-  booktitle = {EMNLP-Findings},
-  year = {2021}
-}
-```
-## Misc
-Our code is build upon modification of [DPR codebase](https://github.com/facebookresearch/DPR). 
-We thank the authors of DPR, Huggingface, Pytorch, and so on. 
-
-## License
-Redcoder MIT license. 
