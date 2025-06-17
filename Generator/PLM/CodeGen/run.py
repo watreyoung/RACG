@@ -46,7 +46,7 @@ from torch.nn import CrossEntropyLoss
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 from bleu import _bleu
-from CodeBLEU.calc_code_bleu import _codebleu
+from CodeBLEU.calc_code_bleu import get_codebleu
 from transformers import (WEIGHTS_NAME, AdamW, get_linear_schedule_with_warmup,
                           BertConfig, BertForMaskedLM, BertTokenizer,
                           GPT2Config, GPT2LMHeadModel, GPT2Tokenizer,
@@ -495,7 +495,7 @@ def eval_bleu(args, model, tokenizer, file_type='test', num=2000):
     EM = round(np.mean(EM) * 100, 2)
     pre_references = [[x.strip() for x in open(os.path.join(args.output_dir, f"{file_type}.gold"), 'r', encoding='utf-8').readlines()]]
     hypothesis = [x.strip() for x in open(os.path.join(args.output_dir, f"{file_type}.output"), 'r', encoding='utf-8').readlines()]
-    codebleu = round(_codebleu(pre_references, hypothesis, args.langs)*100, 2)
+    codebleu = round(get_codebleu(pre_references, hypothesis, args.langs)*100, 2)
     return bleu_score, EM, codebleu
 
 
